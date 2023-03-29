@@ -11,7 +11,7 @@ public class CafeApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(CafeApplication.class.getResource("cafe-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 600);
+        Scene scene = new Scene(fxmlLoader.load(), 500, 500);
         stage.setTitle("RU Cafe");
         stage.setScene(scene);
         stage.show();
