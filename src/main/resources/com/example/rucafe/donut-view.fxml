@@ -1,18 +1,186 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rucafe.DonutController">
-   <top>
-      <Button mnemonicParsing="false" text="View Basket" textAlignment="CENTER" BorderPane.alignment="TOP_RIGHT">
-         <BorderPane.margin>
-            <Insets right="10.0" />
-         </BorderPane.margin>
-      </Button>
-   </top>
    <padding>
-      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+      <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
    </padding>
+   <bottom>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button mnemonicParsing="false" text="Add to Basket" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Subtotal:">
+                     <font>
+                        <Font name="Calibri" size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Region prefHeight="200.0" prefWidth="10.0" />
+                  <TextField prefWidth="100.0" />
+               </children>
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </HBox>
+         </children>
+      </GridPane>
+   </bottom>
+   <center>
+      <GridPane hgap="10.0" vgap="10.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Region prefHeight="200.0" prefWidth="150.0" />
+                        <Button mnemonicParsing="false" text="View Basket" textAlignment="CENTER">
+                           <font>
+                              <Font name="Calibri" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Region minHeight="30.0" prefHeight="30.0" prefWidth="200.0" VBox.vgrow="NEVER" />
+                  <Label text="Select Donut Type:" />
+                  <ComboBox prefWidth="150.0" promptText="None">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:id="yeast" fx:value="Yeast Donut" />
+                           <String fx:id="cake" fx:value="Cake Donut" />
+                           <String fx:id="hole" fx:value="Donut Hole" />
+                        </FXCollections>
+                     </items>
+                  </ComboBox>
+                  <Region prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Quantity" />
+                        <Region prefHeight="200.0" prefWidth="20.0" />
+                        <ComboBox prefWidth="75.0">
+                             <items>
+                                 <FXCollections fx:factory="observableArrayList">
+                                     <String fx:id="1" fx:value="1" />
+                                     <String fx:id="2" fx:value="2" />
+                                     <String fx:id="3" fx:value="3" />
+                                     <String fx:id="4" fx:value="4" />
+                                     <String fx:id="5" fx:value="5" />
+                                     <String fx:id="6" fx:value="6" />
+                                     <String fx:id="7" fx:value="7" />
+                                     <String fx:id="8" fx:value="8" />
+                                     <String fx:id="9" fx:value="9" />
+                                     <String fx:id="10" fx:value="10" />
+                                     <String fx:id="11" fx:value="11" />
+                                     <String fx:id="12" fx:value="12" />
+                                 </FXCollections>
+                             </items>
+                        </ComboBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Label text="Current Order">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <ListView prefHeight="200.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </ListView>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Donut Selection" underline="true">
+                     <font>
+                        <Font name="Calibri" size="36.0" />
+                     </font>
+                  </Text>
+                  <Region prefHeight="10.0" prefWidth="200.0" />
+                  <ImageView pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@tempImgLol.jpeg" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                  </ImageView>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+               <children>
+                  <Label text="Flavors">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <ListView prefHeight="200.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </ListView>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" text="✓" />
+                        <Region prefHeight="200.0" prefWidth="20.0" />
+                        <Button mnemonicParsing="false" text="X">
+                           <font>
+                              <Font name="Calibri Bold Italic" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+      </GridPane>
+   </center>
 </BorderPane>
