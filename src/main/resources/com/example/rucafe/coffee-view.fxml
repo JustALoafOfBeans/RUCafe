@@ -7,7 +7,9 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -66,42 +68,65 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" text="Short" GridPane.halignment="CENTER">
-                     <graphic>
-                        <ImageView fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                     <children>
+                        <ImageView fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@tempImgLol.jpeg" />
                            </image>
                         </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" text="Tall" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-                     <graphic>
-                        <ImageView fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                        <RadioButton mnemonicParsing="false" text="Short">
+                           <font>
+                              <Font name="Calibri" size="12.0" />
+                           </font>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="CupSizes" />
+                           </toggleGroup>
+                        </RadioButton>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1">
+                     <children>
+                        <ImageView fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@tempImgLol.jpeg" />
                            </image>
                         </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" text="Grande" GridPane.columnIndex="2" GridPane.halignment="CENTER">
-                     <graphic>
-                        <ImageView fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                        <RadioButton mnemonicParsing="false" text="Tall" toggleGroup="$CupSizes">
+                           <font>
+                              <Font name="Calibri" size="12.0" />
+                           </font>
+                        </RadioButton>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="2">
+                     <children>
+                        <ImageView fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@tempImgLol.jpeg" />
                            </image>
                         </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" text="Venti" GridPane.columnIndex="3" GridPane.halignment="CENTER">
-                     <graphic>
-                        <ImageView fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                        <RadioButton mnemonicParsing="false" selected="true" text="Grande" toggleGroup="$CupSizes">
+                           <font>
+                              <Font name="Calibri" size="12.0" />
+                           </font>
+                        </RadioButton>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="3">
+                     <children>
+                        <ImageView fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@tempImgLol.jpeg" />
                            </image>
                         </ImageView>
-                     </graphic>
-                  </Button>
+                        <RadioButton mnemonicParsing="false" text="Venti" toggleGroup="$CupSizes">
+                           <font>
+                              <Font name="Calibri" size="12.0" />
+                           </font>
+                        </RadioButton>
+                     </children>
+                  </VBox>
                </children>
             </GridPane>
             <Label text="Add ins:">
