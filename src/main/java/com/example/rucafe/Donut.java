@@ -22,13 +22,18 @@ public class Donut extends MenuItem{
     public double itemPrice() {
         switch (type)  {
             case "yeast":
-                return Double.valueOf(DF.format(1.59*quantity));
+                return Double.valueOf(DF.format(prices.YEAST.val*quantity));
             case "cake":
-                return Double.valueOf(DF.format(1.79*quantity));
+                return Double.valueOf(DF.format(prices.CAKE.val*quantity));
             case "hole":
-                return Double.valueOf(DF.format(0.39*quantity));
+                return Double.valueOf(DF.format(prices.HOLE.val*quantity));
             default:
                 return -1;
         }
+    }
+
+    @Override
+    public String toString() {
+        return null; //todo
     }
 }

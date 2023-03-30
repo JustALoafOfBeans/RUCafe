@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Coffee extends MenuItem{
 
+    private static int INIT = 0;
     private String cupSize;
     private ArrayList<String> addIns;
     private int quantity;
@@ -21,18 +22,32 @@ public class Coffee extends MenuItem{
     }
 
     public double itemPrice() {
-        double price = 0;
-        if (cupSize.equals("small")) {
-            price += 1.89;
+        double price = INIT;
+        if (cupSize.equals("short")) {
+            price += prices.SHORT.val;
         } else if (cupSize.equals("tall")) {
-            price += 2.29;
+            price += prices.TALL.val;
         } else if (cupSize.equals("grande")) {
-            price += 2.69;
+            price += prices.GRANDE.val;
         } else if (cupSize.equals("venti")) {
-            price += 3.09;
+            price += prices.VENTI.val;
         }
-        price += 0.3*addIns.size();
+        price += prices.SYRUP.val*addIns.size();
         price = price*quantity;
         return Double.valueOf(DF.format(price));
+    }
+
+    @Override
+    public String toString() {
+        String item = quantity + " " + cupSize;
+        if (addIns.size() != INIT) {
+            item +=  " (";
+            for (int i = 0; i < addIns.size(); i++) {
+                item += addIns.get(i) + ", ";
+            }
+            item = item.substring(0,item.length()-2); //crop last ", "
+            item += ")";
+        }
+        return item;
     }
 }
