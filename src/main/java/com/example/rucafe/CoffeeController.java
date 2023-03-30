@@ -6,4 +6,6 @@ public class CoffeeController {
     public void setMainController (CafeController controller){
         mainController = controller;
     }
+
+    public
 }
