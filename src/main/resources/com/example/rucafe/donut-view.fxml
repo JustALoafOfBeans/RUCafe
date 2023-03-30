@@ -36,21 +36,21 @@
         </rowConstraints>
          <children>
             <Button mnemonicParsing="false" text="Add to Basket" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Subtotal:">
                      <font>
                         <Font name="Calibri" size="12.0" />
                      </font>
                      <HBox.margin>
-                        <Insets top="10.0" />
+                        <Insets />
                      </HBox.margin>
                   </Text>
                   <Region prefHeight="200.0" prefWidth="10.0" />
                   <TextField prefWidth="100.0" />
                </children>
                <GridPane.margin>
-                  <Insets left="20.0" />
+                  <Insets />
                </GridPane.margin>
             </HBox>
          </children>
