@@ -7,7 +7,9 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -41,7 +43,6 @@
                         <Font name="Calibri" size="36.0" />
                      </font>
                   </Text>
-                  <Button mnemonicParsing="false" text="View Basket" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
                </children>
                <VBox.margin>
                   <Insets left="10.0" right="10.0" top="10.0" />
@@ -66,42 +67,65 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" text="Short" GridPane.halignment="CENTER">
-                     <graphic>
-                        <ImageView fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                     <children>
+                        <ImageView fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@tempImgLol.jpeg" />
                            </image>
                         </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" text="Tall" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-                     <graphic>
-                        <ImageView fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                        <RadioButton fx:id="shortCup" mnemonicParsing="false" onAction="#updateTotal" text="Short">
+                           <font>
+                              <Font name="Calibri" size="12.0" />
+                           </font>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="CupSizes" />
+                           </toggleGroup>
+                        </RadioButton>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1">
+                     <children>
+                        <ImageView fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@tempImgLol.jpeg" />
                            </image>
                         </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" text="Grande" GridPane.columnIndex="2" GridPane.halignment="CENTER">
-                     <graphic>
-                        <ImageView fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                        <RadioButton fx:id="tallCup" mnemonicParsing="false" onAction="#updateTotal" text="Tall" toggleGroup="$CupSizes">
+                           <font>
+                              <Font name="Calibri" size="12.0" />
+                           </font>
+                        </RadioButton>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="2">
+                     <children>
+                        <ImageView fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@tempImgLol.jpeg" />
                            </image>
                         </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" text="Venti" GridPane.columnIndex="3" GridPane.halignment="CENTER">
-                     <graphic>
-                        <ImageView fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                        <RadioButton fx:id="grandeCup" mnemonicParsing="false" onAction="#updateTotal" selected="true" text="Grande" toggleGroup="$CupSizes">
+                           <font>
+                              <Font name="Calibri" size="12.0" />
+                           </font>
+                        </RadioButton>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="3">
+                     <children>
+                        <ImageView fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@tempImgLol.jpeg" />
                            </image>
                         </ImageView>
-                     </graphic>
-                  </Button>
+                        <RadioButton fx:id="ventiCup" mnemonicParsing="false" onAction="#updateTotal" text="Venti" toggleGroup="$CupSizes">
+                           <font>
+                              <Font name="Calibri" size="12.0" />
+                           </font>
+                        </RadioButton>
+                     </children>
+                  </VBox>
                </children>
             </GridPane>
             <Label text="Add ins:">
@@ -116,11 +140,11 @@
                <children>
                   <HBox alignment="CENTER" prefWidth="200.0">
                      <children>
-                        <CheckBox mnemonicParsing="false" text="Sweet Cream" />
+                        <CheckBox fx:id="sCream" mnemonicParsing="false" onAction="#updateTotal" text="Sweet Cream" />
                         <Region minWidth="20.0" />
-                        <CheckBox mnemonicParsing="false" text="French Vanilla" />
+                        <CheckBox fx:id="fVanilla" mnemonicParsing="false" onAction="#updateTotal" text="French Vanilla" />
                         <Region minWidth="20.0" />
-                        <CheckBox mnemonicParsing="false" text="Irish Cream" />
+                        <CheckBox fx:id="iCream" mnemonicParsing="false" onAction="#updateTotal" text="Irish Cream" />
                      </children>
                      <VBox.margin>
                         <Insets top="10.0" />
@@ -128,9 +152,9 @@
                   </HBox>
                   <HBox alignment="CENTER" prefWidth="200.0">
                      <children>
-                        <CheckBox mnemonicParsing="false" text="Caramel" />
+                        <CheckBox fx:id="caramel" mnemonicParsing="false" onAction="#updateTotal" text="Caramel" />
                         <Region minWidth="20.0" />
-                        <CheckBox mnemonicParsing="false" text="Mocha" />
+                        <CheckBox fx:id="mocha" mnemonicParsing="false" onAction="#updateTotal" text="Mocha" />
                      </children>
                   </HBox>
                </children>
@@ -140,22 +164,25 @@
             </VBox>
             <HBox prefHeight="25.0" prefWidth="200.0">
                <children>
-                  <Label text="Quantity">
+                  <Label fx:id="quantityLabel" text="Quantity:">
                      <font>
                         <Font name="Calibri" size="12.0" />
                      </font>
                   </Label>
                   <Region prefWidth="20.0" />
-                  <ComboBox prefWidth="75.0">
+                  <ComboBox fx:id="quantity" onAction="#updateTotal" prefWidth="75.0">
                      <items>
                         <FXCollections fx:factory="observableArrayList">
-                           <String fx:id="1" fx:value="1" />
-                           <String fx:id="2" fx:value="2" />
-                           <String fx:id="3" fx:value="3" />
-                           <String fx:id="4" fx:value="4" />
-                           <String fx:id="5" fx:value="5" />
+                           <String fx:value="1" />
+                           <String fx:value="2" />
+                           <String fx:value="3" />
+                           <String fx:value="4" />
+                           <String fx:value="5" />
                         </FXCollections>
                      </items>
+                     <value>
+                        <String fx:value="1" />
+                     </value>
                   </ComboBox>
                </children>
             </HBox>
@@ -175,7 +202,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" text="Add to Basket" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#onCoffeeAddToBasket" text="Add to Basket" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.halignment="CENTER">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Subtotal: ">
@@ -184,7 +211,7 @@
                      </font>
                   </Text>
                   <Region prefHeight="200.0" prefWidth="10.0" />
-                  <TextField alignment="CENTER" prefWidth="100.0" />
+                  <TextField fx:id="coffeeSubtotal" alignment="TOP_LEFT" onAction="#updateTotal" prefWidth="100.0" />
                </children>
             </HBox>
          </children>
