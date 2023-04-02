@@ -47,7 +47,7 @@
                      </HBox.margin>
                   </Text>
                   <Region prefHeight="200.0" prefWidth="10.0" />
-                  <TextField prefWidth="100.0" />
+                  <TextField fx:id="donutSubtotal" prefWidth="100.0" />
                </children>
                <GridPane.margin>
                   <Insets />
@@ -81,21 +81,24 @@
                   </HBox>
                   <Region minHeight="30.0" prefHeight="30.0" prefWidth="200.0" VBox.vgrow="NEVER" />
                   <Label text="Select Donut Type:" />
-                  <ComboBox prefWidth="150.0" promptText="None">
+                  <ComboBox fx:id="donutType" onAction="#changeType" prefWidth="150.0">
                      <items>
                         <FXCollections fx:factory="observableArrayList">
-                           <String fx:id="yeast" fx:value="Yeast Donut" />
-                           <String fx:id="cake" fx:value="Cake Donut" />
-                           <String fx:id="hole" fx:value="Donut Hole" />
+                           <String fx:value="Yeast Donut" />
+                           <String fx:value="Cake Donut" />
+                           <String fx:value="Donut Hole" />
                         </FXCollections>
                      </items>
+                      <value>
+                          <String fx:value="Yeast" />
+                      </value>
                   </ComboBox>
                   <Region prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label text="Quantity" />
                         <Region prefHeight="200.0" prefWidth="20.0" />
-                        <ComboBox prefWidth="75.0">
+                        <ComboBox fx:id="quantity" prefWidth="75.0">
                              <items>
                                  <FXCollections fx:factory="observableArrayList">
                                      <String fx:id="1" fx:value="1" />
@@ -112,6 +115,9 @@
                                      <String fx:id="12" fx:value="12" />
                                  </FXCollections>
                              </items>
+                            <value>
+                                <String fx:value="1" />
+                            </value>
                         </ComboBox>
                      </children>
                   </HBox>
@@ -124,7 +130,7 @@
                         <Insets left="10.0" right="10.0" />
                      </VBox.margin>
                   </Label>
-                  <ListView prefHeight="200.0" prefWidth="200.0">
+                  <ListView fx:id="order" prefHeight="200.0" prefWidth="200.0">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </VBox.margin>
@@ -159,14 +165,14 @@
                         <Insets left="10.0" />
                      </VBox.margin>
                   </Label>
-                  <ListView prefHeight="200.0" prefWidth="200.0">
+                  <ListView fx:id="flavorsList" prefHeight="200.0" prefWidth="200.0">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </VBox.margin>
                   </ListView>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" text="✓" />
+                        <Button mnemonicParsing="false" onAction="#onDonutAddToOrder" text="✓" />
                         <Region prefHeight="200.0" prefWidth="20.0" />
                         <Button mnemonicParsing="false" text="X">
                            <font>

@@ -1,5 +1,8 @@
 package com.example.rucafe;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
+
 import java.text.DecimalFormat;
 
 public class Donut extends MenuItem{
@@ -21,11 +24,11 @@ public class Donut extends MenuItem{
 
     public double itemPrice() {
         switch (type)  {
-            case "yeast":
+            case "Yeast Donut":
                 return Double.valueOf(DF.format(prices.YEAST.val*quantity));
-            case "cake":
+            case "Cake Donut":
                 return Double.valueOf(DF.format(prices.CAKE.val*quantity));
-            case "hole":
+            case "Donut Hole":
                 return Double.valueOf(DF.format(prices.HOLE.val*quantity));
             default:
                 return -1;
@@ -34,6 +37,6 @@ public class Donut extends MenuItem{
 
     @Override
     public String toString() {
-        return quantity + " " + type + " " + flavor;
+        return quantity + " " + type + " (" + flavor + ")";
     }
 }
