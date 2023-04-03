@@ -1,6 +1,5 @@
 package com.example.rucafe;
 
-import javafx.fxml.FXML;
 
 public abstract class MenuItem {
 
