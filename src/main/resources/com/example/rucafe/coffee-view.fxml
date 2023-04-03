@@ -69,9 +69,9 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                      <children>
-                        <ImageView fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@tempImgLol.jpeg" />
+                              <Image url="@../../../images/Coffee.png" />
                            </image>
                         </ImageView>
                         <RadioButton fx:id="shortCup" mnemonicParsing="false" onAction="#updateTotal" text="Short">
@@ -86,9 +86,9 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1">
                      <children>
-                        <ImageView fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@tempImgLol.jpeg" />
+                              <Image url="@../../../images/Coffee.png" />
                            </image>
                         </ImageView>
                         <RadioButton fx:id="tallCup" mnemonicParsing="false" onAction="#updateTotal" text="Tall" toggleGroup="$CupSizes">
@@ -100,9 +100,9 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="2">
                      <children>
-                        <ImageView fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@tempImgLol.jpeg" />
+                              <Image url="@../../../images/Coffee.png" />
                            </image>
                         </ImageView>
                         <RadioButton fx:id="grandeCup" mnemonicParsing="false" onAction="#updateTotal" selected="true" text="Grande" toggleGroup="$CupSizes">
@@ -116,7 +116,7 @@
                      <children>
                         <ImageView fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@tempImgLol.jpeg" />
+                              <Image url="@../../../images/Coffee.png" />
                            </image>
                         </ImageView>
                         <RadioButton fx:id="ventiCup" mnemonicParsing="false" onAction="#updateTotal" text="Venti" toggleGroup="$CupSizes">

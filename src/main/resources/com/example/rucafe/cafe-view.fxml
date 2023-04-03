@@ -43,7 +43,7 @@
                <graphic>
                   <ImageView fitHeight="100.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@tempImgLol.jpeg" />
+                        <Image url="@../../../images/CakeDonut.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -55,7 +55,7 @@
                <graphic>
                   <ImageView fitHeight="100.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@tempImgLol.jpeg" />
+                        <Image url="@../../../images/Coffee.png" />
                      </image>
                   </ImageView>
                </graphic>

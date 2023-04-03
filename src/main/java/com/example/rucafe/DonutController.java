@@ -7,7 +7,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
+import java.io.File;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -20,6 +26,8 @@ public class DonutController {
     public ListView<Donut> order;
     @FXML
     public TextField donutSubtotal;
+    @FXML
+    public ImageView donutIMG;
     private ObservableList<String> donutFlavors;
     private ObservableList<Donut> itemsInOrder;
     private CafeController mainController;
@@ -53,12 +61,18 @@ public class DonutController {
             donutFlavors = FXCollections.observableArrayList("Chocolate glaze", "Strawberry Glaze",
                     "Boston Cream", "Cookies & Cream", "Raspberry Glaze");
             flavorsList.setItems(donutFlavors);
+            Image img = new Image(new File("src/main/resources/images/YeastDonut.png").toURI().toString());
+            donutIMG.setImage(img);
         } else if (type.equals("Cake Donut")) {
             donutFlavors = FXCollections.observableArrayList("Lemon", "Blueberry", "Chocolate");
             flavorsList.setItems(donutFlavors);
+            Image img = new Image(new File("src/main/resources/images/CakeDonut.png").toURI().toString());
+            donutIMG.setImage(img);
         } else if (type.equals("Donut Hole")) {
             donutFlavors = FXCollections.observableArrayList("Chocolate", "Glazed", "Pumpkin");
             flavorsList.setItems(donutFlavors);
+            Image img = new Image(new File("src/main/resources/images/HoleDonut.png").toURI().toString());
+            donutIMG.setImage(img);
         }
     }
 
