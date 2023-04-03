@@ -85,7 +85,7 @@
                         </FXCollections>
                      </items>
                       <value>
-                          <String fx:value="Yeast" />
+                          <String fx:value="Yeast Donut" />
                       </value>
                   </ComboBox>
                   <Region prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
@@ -169,7 +169,7 @@
                      <children>
                         <Button mnemonicParsing="false" onAction="#onDonutAddToOrder" text="✓" />
                         <Region prefHeight="200.0" prefWidth="20.0" />
-                        <Button mnemonicParsing="false" text="X">
+                        <Button mnemonicParsing="false" onAction="#onDonutRemoveFromOrder" text="X">
                            <font>
                               <Font name="Calibri Bold Italic" size="12.0" />
                            </font>

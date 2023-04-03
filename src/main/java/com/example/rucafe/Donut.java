@@ -36,6 +36,23 @@ public class Donut extends MenuItem{
     }
 
     @Override
+    public boolean equals(Object equalObject) {
+        if (equalObject instanceof Donut)
+        {
+            Donut equalDonut = (Donut) equalObject; // Cast into Student if can
+            return (this.compareTo(equalDonut) == 0);
+        }
+        return false; // Not of type student, invalid comparison
+    }
+
+    public int compareTo(Donut compareDonut) {
+        if (this.toString().equals(compareDonut.toString())) {
+            return 0;
+        }
+        return -1;
+    }
+
+    @Override
     public String toString() {
         return quantity + " " + type + " (" + flavor + ")";
     }

@@ -41,10 +41,22 @@ public class DonutController {
         itemsInOrder = FXCollections.observableArrayList();
     }
 
+    @FXML
+    protected void onDonutRemoveFromOrder() {
+        Donut item = makeDonut();
+        if (item == null) {
+            return;
+        } else if (itemsInOrder.contains(item)) {
+            System.out.println("removing " + item);
+            itemsInOrder.remove(item);
+        }
+        order.setItems(itemsInOrder);
+        updateTotal();
+    }
+
     protected void updateTotal() {
         double sum = 0;
         for (int i = 0; i < order.getItems().size(); i++) {
-            System.out.println(order.getItems().get(i).itemPrice());
             sum += (order.getItems().get(i).itemPrice());
         }
         donutSubtotal.setText("$ " + Double.valueOf(DF.format(sum)));
