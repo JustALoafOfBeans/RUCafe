@@ -19,6 +19,7 @@ public class CafeController {
             root = (BorderPane) loader.load();
             Scene scene = new Scene(root, 500, 500);
             stage.setTitle("Donut Select");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
             DonutController donutPage = loader.getController();
@@ -41,6 +42,7 @@ public class CafeController {
             root = (BorderPane) loader.load();
             Scene scene = new Scene(root, 500, 500);
             stage.setTitle("Coffee Select");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
             CoffeeController coffeePage = loader.getController();
@@ -63,6 +65,7 @@ public class CafeController {
             root = (BorderPane) loader.load();
             Scene scene = new Scene(root, 500, 500);
             stage.setTitle("Basket");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
             BasketController basketPage = loader.getController();
@@ -85,6 +88,7 @@ public class CafeController {
             root = (BorderPane) loader.load();
             Scene scene = new Scene(root, 500, 500);
             stage.setTitle("All Store Orders");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
             AllOrdersController allordersPage = loader.getController();

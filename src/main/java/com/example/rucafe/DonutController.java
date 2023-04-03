@@ -11,11 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.File;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.text.DecimalFormat;
-import java.util.List;
 
 public class DonutController {
     @FXML
