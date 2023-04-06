@@ -8,7 +8,7 @@ import java.text.DecimalFormat;
 /**
  * The Donut class extends the abstract MenuItem class and describes orders
  * of donuts from the RU Cafe
- * @author Victoria Chen
+ * @author Victoria Chen, Bridget Zhang
  */
 public class Donut extends MenuItem{
     /**

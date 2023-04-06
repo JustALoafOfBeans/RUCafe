@@ -61,8 +61,7 @@ public class DonutController {
      */
     private CafeController mainController;
     /**
-     * Use DF.format(value) to round value to two decimals places. Rounding
-     * up or down is by basic convention. Returns a String.
+     * Use DF.format(value) to round value to two decimals places
      */
     private static final DecimalFormat DF = new DecimalFormat("0.00");
 
