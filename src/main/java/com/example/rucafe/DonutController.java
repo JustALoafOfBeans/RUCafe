@@ -46,10 +46,23 @@ public class DonutController {
         Donut item = makeDonut();
         if (item == null) {
             return;
-        } else if (itemsInOrder.contains(item)) {
+        }
+        Donut hasItem = containsType(item);
+        int hasQuant, remQuant;
+        if (hasItem != null) {
+            hasQuant = hasItem.getQuantity();
+            remQuant = item.getQuantity();
+            if (hasQuant > remQuant) { // Removing less than added
+                hasItem.setQuantity(hasQuant - remQuant);
+            } else { // Removing all
+                itemsInOrder.remove(hasItem);
+            }
+        }
+        /*else if (containsType(item)) {
             System.out.println("removing " + item);
             itemsInOrder.remove(item);
-        }
+        }*/
+        order.refresh();
         order.setItems(itemsInOrder);
         updateTotal();
     }
@@ -95,9 +108,27 @@ public class DonutController {
         if (item == null) {
             return;
         }
-        itemsInOrder.add(item);
+        Donut n = containsType(item);
+        if (n != null) {
+            n.setQuantity(n.getQuantity() + item.getQuantity());
+        } else {
+            itemsInOrder.add(item);
+        }
+        order.refresh();
         order.setItems(itemsInOrder);
         updateTotal();
+    }
+
+    // Returns null if no item of that type+flavor yet
+    private Donut containsType(Donut newItem) {
+        for (Donut item : itemsInOrder) {
+            if (item.getType().equals(newItem.getType())) {
+                if (item.getFlavor().equals(newItem.getFlavor())) {
+                    return item;
+                }
+            }
+        }
+        return null;
     }
 
     private Donut makeDonut() {

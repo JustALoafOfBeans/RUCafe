@@ -56,4 +56,20 @@ public class Donut extends MenuItem{
     public String toString() {
         return quantity + " " + type + " (" + flavor + ")";
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getFlavor() {
+        return flavor;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int newQuantity) {
+        quantity = newQuantity;
+    }
 }
