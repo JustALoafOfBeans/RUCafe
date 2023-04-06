@@ -7,7 +7,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Class that runs the RU Cafe application
+ * @author Victoria Chen
+ */
 public class CafeApplication extends Application {
+    /**
+     * Method that sets stage and starts GUI
+     */
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(CafeApplication.class.getResource("cafe-view.fxml"));
@@ -18,6 +25,10 @@ public class CafeApplication extends Application {
         stage.show();
     }
 
+    /**
+     * Main function that launches Cafe GUI
+     * @param args String array of input arguments
+     */
     public static void main(String[] args) {
         launch();
     }
