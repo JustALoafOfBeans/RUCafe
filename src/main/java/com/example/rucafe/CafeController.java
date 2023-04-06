@@ -18,6 +18,8 @@ public class CafeController {
     private ObservableList<MenuItem> orderCoffee;
     DonutController donutPage;
     AllOrdersController allordersPage;
+    ArrayList<Order> allordersList;
+    int allordersNext;
     @FXML
     protected void displayDonutsViewer() {
         Stage stage = new Stage();
@@ -191,9 +193,27 @@ public class CafeController {
         orderCoffee = null;
     }
 
-    public void placeOrder() {
+    /*public void placeOrder() {
         ArrayList<MenuItem> finalOrder = new ArrayList<MenuItem>(returnBasket());
         displayAllOrdersViewer();
-        allordersPage.addToStoreOrder(finalOrder);
+        //allordersPage.addToStoreOrder(finalOrder);
+    }*/
+
+    public void placeOrder() {
+        if (allordersNext == 0) {
+            allordersNext = 1; // first order
+        }
+        ArrayList<MenuItem> newOrder = new ArrayList<MenuItem>(returnBasket());
+        if (allordersList == null) {
+            allordersList = new ArrayList<Order>();
+        }
+        allordersList.add(new Order(allordersNext, newOrder));
+
+        System.out.println("Adding order #" + allordersNext);
+        for (MenuItem item : newOrder) {
+            System.out.println(item);
+        }
+
+        allordersNext += 1;
     }
 }
