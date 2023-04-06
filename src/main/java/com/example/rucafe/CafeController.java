@@ -195,6 +195,9 @@ public class CafeController {
     }
 
     public void placeOrder() {
+        if (orderDonut == null && orderCoffee == null) {
+            return;
+        }
         // Initialize orders list if needed
         if (allordersNext == 0) {
             allordersNext = 1; // first order
