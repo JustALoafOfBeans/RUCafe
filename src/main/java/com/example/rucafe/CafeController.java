@@ -20,7 +20,6 @@ public class CafeController {
     DonutController donutPage;
     AllOrdersController allordersPage;
     ObservableList<Order> allordersList;
-    ArrayList<Integer> allordersNums;
     int allordersNext;
     @FXML
     protected void displayDonutsViewer() {
@@ -200,7 +199,7 @@ public class CafeController {
         if (allordersNext == 0) {
             allordersNext = 1; // first order
         }
-        ArrayList<MenuItem> newOrder = new ArrayList<MenuItem>(returnBasket());
+        ObservableList<MenuItem> newOrder = returnBasket();
         if (allordersList == null) {
             allordersList = FXCollections.observableArrayList();
         }
@@ -212,19 +211,10 @@ public class CafeController {
             System.out.println(item);
         }
 
-        if (allordersNums == null) {
-            allordersNums = new ArrayList<Integer>();
-        }
-        allordersNums.add(allordersNext);
-
         allordersNext += 1;
     }
 
     public ObservableList<Order> getAllordersList() {
         return allordersList;
-    }
-
-    public ArrayList<Integer> getAllordersNums() {
-        return allordersNums;
     }
 }

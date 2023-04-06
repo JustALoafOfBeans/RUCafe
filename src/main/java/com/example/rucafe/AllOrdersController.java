@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.JavaFXBuilderFactory;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 
@@ -17,27 +18,47 @@ public class AllOrdersController {
     public ListView<MenuItem> ordersView;
     @FXML
     public ComboBox<Integer> orderNum;
+    @FXML
+    public Button cancelButton, exportButton;
     private int nextOrderNum;
     private ObservableList<Order> orders;
-    private ArrayList<Integer> nums;
+    private ObservableList<MenuItem> selectedOrder;
     private CafeController mainController;
 
     public void initialize() {
+        ordersView = new ListView<MenuItem>();
         orderNum.setOnAction(this::changeOrder);
+        ordersView.setItems(null);
     }
 
     public void setWindow() {
         orders = mainController.getAllordersList();
-        nums = mainController.getAllordersNums();
-        for (Integer num : nums) {
-            orderNum.getItems().add(num);
+        if (orders != null) {
+            for (Order ord : orders) {
+                orderNum.getItems().add(ord.getNum());
+            }
         }
     }
 
+    // TODO ordersView not updating to show selected menu items
     @FXML
     protected void changeOrder(ActionEvent event) {
-        int num = orderNum.getSelectionModel().getSelectedItem();
-        System.out.println("Viewing order #" + num);
+        int viewNum = orderNum.getSelectionModel().getSelectedItem();
+        System.out.println("Viewing order #" + viewNum);
+        // Find list of items associated w/ that number and return
+        for (Order ord : orders) {
+            if (ord.getNum() == viewNum) {
+                selectedOrder = ord.getItems();
+            }
+        }
+        if (selectedOrder != null) {
+            System.out.println("Showing");
+            for (MenuItem item : selectedOrder) {
+                System.out.println(item);
+            } // todo remove test print
+            ordersView.setItems(selectedOrder);
+        }
+        ordersView.refresh();
     }
 
     /**
@@ -46,7 +67,7 @@ public class AllOrdersController {
      * @param content
      */
     @FXML
-    protected void addToStoreOrder(ArrayList<MenuItem> content) {
+    protected void addToStoreOrder(ObservableList<MenuItem> content) {
         orders.add(new Order(nextOrderNum, content));
         nextOrderNum++;
     }
@@ -60,10 +81,6 @@ public class AllOrdersController {
     public void setMainController (CafeController controller){
         mainController = controller;
         setWindow();
-    }
-
-    public ComboBox<Integer> getOrdernumBox () {
-        return orderNum;
     }
 
     // todo remove order

@@ -1,14 +1,24 @@
 package com.example.rucafe;
 
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 
 public class Order {
 
     private int orderNum;
-    private ArrayList<MenuItem> items;
+    private ObservableList<MenuItem> items;
 
-    public Order(int num, ArrayList<MenuItem> content) {
+    public Order(int num, ObservableList<MenuItem> content) {
         this.orderNum = num;
         this.items = content;
+    }
+
+    public int getNum() {
+        return orderNum;
+    }
+
+    public ObservableList<MenuItem> getItems() {
+        return items;
     }
 }

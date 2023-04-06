@@ -36,7 +36,7 @@
                      </font>
                   </Label>
                   <Region prefWidth="10.0" />
-                  <ComboBox fx:id="orderNum" prefWidth="100.0" />
+                  <ComboBox fx:id="orderNum" onAction="#changeOrder" prefWidth="100.0" />
                </children>
             </HBox>
             <ListView fx:id="orderView" prefHeight="300.0" prefWidth="200.0" />
@@ -61,12 +61,12 @@
                         </HBox>
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" text="Cancel Order" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel Order" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <font>
                         <Font name="Calibri" size="12.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" text="Export" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Button fx:id="exportButton" mnemonicParsing="false" onAction="#exportOrders" text="Export" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <font>
                         <Font name="Calibri" size="12.0" />
                      </font>

@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
 import java.text.DecimalFormat;
 
 public class BasketController {
@@ -51,6 +53,8 @@ public class BasketController {
     protected void onFinalize() {
         mainController.placeOrder();
         onClearOrder();
+        Stage stage = (Stage) finalButton.getScene().getWindow();
+        stage.close();
     }
 
     protected void updateTotals () {
