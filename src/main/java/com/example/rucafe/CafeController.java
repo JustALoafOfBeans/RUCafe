@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -18,7 +19,8 @@ public class CafeController {
     private ObservableList<MenuItem> orderCoffee;
     DonutController donutPage;
     AllOrdersController allordersPage;
-    ArrayList<Order> allordersList;
+    ObservableList<Order> allordersList;
+    ArrayList<Integer> allordersNums;
     int allordersNext;
     @FXML
     protected void displayDonutsViewer() {
@@ -193,12 +195,6 @@ public class CafeController {
         orderCoffee = null;
     }
 
-    /*public void placeOrder() {
-        ArrayList<MenuItem> finalOrder = new ArrayList<MenuItem>(returnBasket());
-        displayAllOrdersViewer();
-        //allordersPage.addToStoreOrder(finalOrder);
-    }*/
-
     public void placeOrder() {
         // Initialize orders list if needed
         if (allordersNext == 0) {
@@ -206,7 +202,7 @@ public class CafeController {
         }
         ArrayList<MenuItem> newOrder = new ArrayList<MenuItem>(returnBasket());
         if (allordersList == null) {
-            allordersList = new ArrayList<Order>();
+            allordersList = FXCollections.observableArrayList();
         }
         allordersList.add(new Order(allordersNext, newOrder));
 
@@ -216,6 +212,19 @@ public class CafeController {
             System.out.println(item);
         }
 
+        if (allordersNums == null) {
+            allordersNums = new ArrayList<Integer>();
+        }
+        allordersNums.add(allordersNext);
+
         allordersNext += 1;
+    }
+
+    public ObservableList<Order> getAllordersList() {
+        return allordersList;
+    }
+
+    public ArrayList<Integer> getAllordersNums() {
+        return allordersNums;
     }
 }
