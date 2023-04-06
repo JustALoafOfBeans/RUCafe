@@ -41,7 +41,9 @@ public class BasketController {
 
     @FXML
     protected void onClearOrder() {
-        // todo i'm teired
+        mainController.clearBasket();
+        menuList = mainController.returnBasket();
+        order.setItems(menuList);
         updateTotals();
     }
 

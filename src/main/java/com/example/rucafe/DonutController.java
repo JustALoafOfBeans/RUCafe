@@ -59,10 +59,6 @@ public class DonutController {
                 itemsInOrder.remove(hasItem);
             }
         }
-        /*else if (containsType(item)) {
-            System.out.println("removing " + item);
-            itemsInOrder.remove(item);
-        }*/
         order.refresh();
         order.setItems(itemsInOrder);
         updateTotal();

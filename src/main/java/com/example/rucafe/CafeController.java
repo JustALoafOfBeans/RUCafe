@@ -176,4 +176,15 @@ public class CafeController {
             orderCoffee.remove(item);
         }
     }
+
+    public void clearBasket() {
+        if (orderDonut != null) {
+            orderDonut.clear();
+        }
+        if (orderCoffee != null) {
+            orderCoffee.clear();
+        }
+        orderDonut = null;
+        orderCoffee = null;
+    }
 }
