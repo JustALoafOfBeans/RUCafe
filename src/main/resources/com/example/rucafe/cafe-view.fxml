@@ -67,7 +67,7 @@
                <graphic>
                   <ImageView fitHeight="100.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@tempImgLol.jpeg" />
+                        <Image url="@../../../images/Basket.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -79,7 +79,7 @@
                <graphic>
                   <ImageView fitHeight="100.0" nodeOrientation="INHERIT" onDragDetected="#displayAllOrdersViewer" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@tempImgLol.jpeg" />
+                        <Image url="@../../../images/StoreOrder.png" />
                      </image>
                   </ImageView>
                </graphic>

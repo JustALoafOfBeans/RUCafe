@@ -150,4 +150,8 @@ public class DonutController {
         Stage stage = (Stage) basketButton.getScene().getWindow();
         stage.close();
     }
+
+    public void removeDonut(Donut item) {
+        itemsInOrder.remove(item);
+    }
 }

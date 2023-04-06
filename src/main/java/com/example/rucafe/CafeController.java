@@ -14,6 +14,7 @@ import java.io.IOException;
 public class CafeController {
     private ObservableList<Donut> orderDonut;
     private ObservableList<MenuItem> orderCoffee;
+    DonutController donutPage;
     @FXML
     protected void displayDonutsViewer() {
         Stage stage = new Stage();
@@ -26,7 +27,7 @@ public class CafeController {
             stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
-            DonutController donutPage = loader.getController();
+            donutPage = loader.getController();
             donutPage.setMainController(this);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -146,5 +147,33 @@ public class CafeController {
             System.out.println(item + " for " + item.itemPrice());
         }
         System.out.println(); // todo remove test print
+    }
+
+    public ObservableList<MenuItem> returnBasket () {
+        ObservableList<MenuItem> basket = FXCollections.observableArrayList();
+        if (orderCoffee != null) {
+            basket.addAll(orderCoffee);
+        }
+        if (orderDonut != null) {
+            basket.addAll(orderDonut);
+        }
+
+        System.out.println("BASKET:");
+        for (MenuItem item : basket) {
+            System.out.println(item);
+        }
+        System.out.println();
+
+        return basket;
+    }
+
+    public void removeItem(MenuItem item) {
+        if (item instanceof Donut) {
+            donutPage.removeDonut((Donut) item);
+            orderDonut.remove(item);
+        }
+        if (item instanceof Coffee) {
+            orderCoffee.remove(item);
+        }
     }
 }
