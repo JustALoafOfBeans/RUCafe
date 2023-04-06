@@ -40,15 +40,15 @@
                <children>
                   <Label text="Subtotal: " />
                   <Region prefWidth="10.0" />
-                  <TextField prefWidth="75.0" />
+                  <TextField fx:id="basketSubtotal" prefWidth="75.0" />
                   <Region prefWidth="30.0" />
                   <Label text="Tax: " />
                   <Region prefWidth="10.0" />
-                  <TextField prefWidth="75.0" />
+                  <TextField fx:id="basketTax" prefWidth="75.0" />
                   <Region prefWidth="30.0" />
                   <Label text="Total:" />
                   <Region prefWidth="10.0" />
-                  <TextField prefWidth="75.0" />
+                  <TextField fx:id="basketTotal" prefWidth="75.0" />
                </children>
             </HBox>
          </children>
