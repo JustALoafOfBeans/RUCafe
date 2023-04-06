@@ -50,6 +50,7 @@ public class BasketController {
     @FXML
     protected void onFinalize() {
         mainController.placeOrder();
+        onClearOrder();
     }
 
     protected void updateTotals () {

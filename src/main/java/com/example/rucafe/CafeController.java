@@ -200,6 +200,7 @@ public class CafeController {
     }*/
 
     public void placeOrder() {
+        // Initialize orders list if needed
         if (allordersNext == 0) {
             allordersNext = 1; // first order
         }
@@ -209,6 +210,7 @@ public class CafeController {
         }
         allordersList.add(new Order(allordersNext, newOrder));
 
+        // Add order
         System.out.println("Adding order #" + allordersNext);
         for (MenuItem item : newOrder) {
             System.out.println(item);
