@@ -9,6 +9,7 @@ import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -88,6 +89,8 @@ public class AllOrdersController {
                         }
                     }
                     myWriter.write("\n");
+                    Stage stage = (Stage) exportButton.getScene().getWindow();
+                    stage.close();
                 }
             } else {
                 myWriter.write("No orders to export.");
