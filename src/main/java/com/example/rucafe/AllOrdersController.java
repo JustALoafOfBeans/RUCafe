@@ -26,7 +26,6 @@ public class AllOrdersController {
     private CafeController mainController;
 
     public void initialize() {
-        ordersView = new ListView<MenuItem>();
         orderNum.setOnAction(this::changeOrder);
         ordersView.setItems(null);
     }
@@ -40,11 +39,9 @@ public class AllOrdersController {
         }
     }
 
-    // TODO ordersView not updating to show selected menu items
     @FXML
     protected void changeOrder(ActionEvent event) {
         int viewNum = orderNum.getSelectionModel().getSelectedItem();
-        System.out.println("Viewing order #" + viewNum);
         // Find list of items associated w/ that number and return
         for (Order ord : orders) {
             if (ord.getNum() == viewNum) {
@@ -52,10 +49,6 @@ public class AllOrdersController {
             }
         }
         if (selectedOrder != null) {
-            System.out.println("Showing");
-            for (MenuItem item : selectedOrder) {
-                System.out.println(item);
-            } // todo remove test print
             ordersView.setItems(selectedOrder);
         }
         ordersView.refresh();

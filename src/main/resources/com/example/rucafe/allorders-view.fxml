@@ -39,7 +39,7 @@
                   <ComboBox fx:id="orderNum" onAction="#changeOrder" prefWidth="100.0" />
                </children>
             </HBox>
-            <ListView fx:id="orderView" prefHeight="300.0" prefWidth="200.0" />
+            <ListView fx:id="ordersView" prefHeight="300.0" prefWidth="200.0" />
             <GridPane prefHeight="30.0" prefWidth="413.0">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
