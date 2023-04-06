@@ -3,6 +3,7 @@ package com.example.rucafe;
 /**
  * The MenuItem class is an abstract class that includes methods to define
  * items that could be added to an order from the RU cafe.
+ * @author Victoria Chen
  */
 public abstract class MenuItem {
 
