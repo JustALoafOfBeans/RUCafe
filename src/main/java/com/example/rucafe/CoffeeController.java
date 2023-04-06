@@ -2,6 +2,7 @@ package com.example.rucafe;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
@@ -18,6 +19,8 @@ public class CoffeeController {
     public ToggleGroup CupSizes;
     @FXML
     public TextField coffeeSubtotal;
+    @FXML
+    public Button basketButton;
     private CafeController mainController;
     //Get the reference to the MainController object
     public void setMainController (CafeController controller){
@@ -32,6 +35,10 @@ public class CoffeeController {
     @FXML
     protected void onCoffeeAddToBasket() {
         MenuItem item = makeCoffee();
+        mainController.addCoffee(item);
+        item = null;
+        Stage stage = (Stage) basketButton.getScene().getWindow();
+        stage.close();
     }
 
     private Coffee makeCoffee() {

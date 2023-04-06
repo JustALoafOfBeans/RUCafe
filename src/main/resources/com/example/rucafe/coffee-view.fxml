@@ -202,7 +202,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#onCoffeeAddToBasket" text="Add to Basket" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+            <Button fx:id="basketButton" mnemonicParsing="false" onAction="#onCoffeeAddToBasket" text="Add to Basket" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.halignment="CENTER">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Subtotal: ">

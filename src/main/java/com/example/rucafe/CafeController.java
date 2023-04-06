@@ -1,5 +1,6 @@
 package com.example.rucafe;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,7 @@ import java.io.IOException;
 
 public class CafeController {
     private ObservableList<Donut> orderDonut;
+    private ObservableList<MenuItem> orderCoffee;
     @FXML
     protected void displayDonutsViewer() {
         Stage stage = new Stage();
@@ -118,7 +120,7 @@ public class CafeController {
             }
         }
         for (Donut nut : orderDonut) { // todo remove test print
-            System.out.println(nut);
+            System.out.println(nut + " for " + nut.itemPrice());
         }
         System.out.println();
     }
@@ -133,5 +135,16 @@ public class CafeController {
             }
         }
         return null;
+    }
+
+    public void addCoffee (MenuItem newCoffee) {
+        if (orderCoffee == null) {
+            orderCoffee = FXCollections.observableArrayList();
+        }
+        orderCoffee.add(newCoffee);
+        for (MenuItem item : orderCoffee) {
+            System.out.println(item + " for " + item.itemPrice());
+        }
+        System.out.println(); // todo remove test print
     }
 }
