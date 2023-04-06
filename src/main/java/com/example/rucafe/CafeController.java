@@ -1,5 +1,6 @@
 package com.example.rucafe;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,6 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class CafeController {
+    private ObservableList<Donut> orderDonut;
     @FXML
     protected void displayDonutsViewer() {
         Stage stage = new Stage();
@@ -100,5 +102,36 @@ public class CafeController {
             alert.setContentText("Couldn't load allorders-view.fxml.");
             alert.showAndWait();
         }
+    }
+
+    public void addDonuts(ObservableList<Donut> newOrder) {
+        if (orderDonut == null) {
+            orderDonut = newOrder;
+        } else {
+            for (Donut newDonut : newOrder) {
+                Donut hasDonut = containsType(newDonut);
+                if (hasDonut != null) {
+                    hasDonut.setQuantity(hasDonut.getQuantity() + newDonut.getQuantity());
+                } else {
+                    orderDonut.add(newDonut);
+                }
+            }
+        }
+        for (Donut nut : orderDonut) { // todo remove test print
+            System.out.println(nut);
+        }
+        System.out.println();
+    }
+
+    // Returns null if no item of that type+flavor yet
+    private Donut containsType(Donut newItem) { // todo copy pasted from DonutController... maybe move to donut
+        for (Donut item : orderDonut) {
+            if (item.getType().equals(newItem.getType())) {
+                if (item.getFlavor().equals(newItem.getFlavor())) {
+                    return item;
+                }
+            }
+        }
+        return null;
     }
 }

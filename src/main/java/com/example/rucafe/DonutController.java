@@ -4,11 +4,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.text.DecimalFormat;
@@ -24,6 +26,8 @@ public class DonutController {
     public TextField donutSubtotal;
     @FXML
     public ImageView donutIMG;
+    @FXML
+    public Button basketButton;
     private ObservableList<String> donutFlavors;
     private ObservableList<Donut> itemsInOrder;
     private CafeController mainController;
@@ -142,4 +146,11 @@ public class DonutController {
         return item;
     }
 
+    @FXML
+    public void addBasket(ActionEvent actionEvent) {
+        mainController.addDonuts(itemsInOrder);
+        itemsInOrder.removeAll();
+        Stage stage = (Stage) basketButton.getScene().getWindow();
+        stage.close();
+    }
 }
