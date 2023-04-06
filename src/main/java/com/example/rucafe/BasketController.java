@@ -47,6 +47,11 @@ public class BasketController {
         updateTotals();
     }
 
+    @FXML
+    protected void onFinalize() {
+        mainController.placeOrder();
+    }
+
     protected void updateTotals () {
         double subtotal = 0;
         for (int i = 0; i < order.getItems().size(); i++) {

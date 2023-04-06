@@ -10,11 +10,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CafeController {
     private ObservableList<Donut> orderDonut;
     private ObservableList<MenuItem> orderCoffee;
     DonutController donutPage;
+    AllOrdersController allordersPage;
     @FXML
     protected void displayDonutsViewer() {
         Stage stage = new Stage();
@@ -96,7 +99,7 @@ public class CafeController {
             stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
-            AllOrdersController allordersPage = loader.getController();
+            allordersPage = loader.getController();
             allordersPage.setMainController(this);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -158,11 +161,11 @@ public class CafeController {
             basket.addAll(orderDonut);
         }
 
-        System.out.println("BASKET:");
+        /* System.out.println("BASKET:");
         for (MenuItem item : basket) {
             System.out.println(item);
         }
-        System.out.println();
+        System.out.println(); */
 
         return basket;
     }
@@ -186,5 +189,11 @@ public class CafeController {
         }
         orderDonut = null;
         orderCoffee = null;
+    }
+
+    public void placeOrder() {
+        ArrayList<MenuItem> finalOrder = new ArrayList<MenuItem>(returnBasket());
+        displayAllOrdersViewer();
+        allordersPage.addToStoreOrder(finalOrder);
     }
 }

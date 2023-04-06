@@ -21,8 +21,14 @@ public class AllOrdersController {
      * @param content
      */
     @FXML
-    protected void addToStoreOrder(ArrayList<String> content) {
+    protected void addToStoreOrder(ArrayList<MenuItem> content) {
         orders.add(new Order(nextOrderNum, content));
+
+        System.out.println("Placing order #" + nextOrderNum);
+        for (MenuItem item : content) {
+            System.out.println(item);
+        }
+
         nextOrderNum++;
     }
 
