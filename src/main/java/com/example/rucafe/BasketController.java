@@ -51,6 +51,9 @@ public class BasketController {
 
     @FXML
     protected void onFinalize() {
+        if (menuList.isEmpty()) {
+            return;
+        }
         mainController.placeOrder();
         onClearOrder();
         Stage stage = (Stage) finalButton.getScene().getWindow();

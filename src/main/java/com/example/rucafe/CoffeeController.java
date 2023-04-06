@@ -32,6 +32,10 @@ public class CoffeeController {
         coffeeSubtotal.setText("$ " + Double.toString(makeCoffee().itemPrice()));
     }
 
+    public void initialize() {
+        updateTotal();
+    }
+
     @FXML
     protected void onCoffeeAddToBasket() {
         MenuItem item = makeCoffee();
