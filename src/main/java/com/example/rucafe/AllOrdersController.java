@@ -63,7 +63,7 @@ public class AllOrdersController {
     /**
      *  Constant for tax rate in NJ, applied to find tax and total costs
      */
-    private static final double taxNJ = 0.06625;
+    private static final double TAXNJ = 0.06625;
 
     /**
      * Method runs on window initialization. Sets up change order action
@@ -105,7 +105,7 @@ public class AllOrdersController {
                 sum += item.itemPrice();
             }
         }
-        sum += sum*taxNJ; //add tax
+        sum += sum*TAXNJ; //add tax
         storeOrdersTotal.setText("$ " + Double.valueOf(DF.format(sum)));
     }
 
@@ -203,7 +203,7 @@ public class AllOrdersController {
                 sum += item.itemPrice();
             }
         }
-        sum += sum*taxNJ; //add tax
+        sum += sum*TAXNJ; //add tax
         return DF.format(sum);
     }
 
