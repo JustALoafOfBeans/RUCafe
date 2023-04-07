@@ -18,19 +18,43 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+/**
+ * Controller class that handles events related to the Store Orders scene,
+ * launched by the CafeController when the Store Orders is selected
+ * @author Victoria Chen, Bridget Zhang
+ */
 public class AllOrdersController {
-
+    /**
+     * List view of the items in the currently selected order
+     */
     @FXML
     public ListView<MenuItem> ordersView;
+    /**
+     * Combobox containing the order numbers of all the orders placed
+     */
     @FXML
     public ComboBox<Integer> orderNum;
+    /**
+     * Buttons to cancel and order and export the orders to an external file
+     */
     @FXML
     public Button cancelButton, exportButton;
+    /**
+     * Text field that displays the total cost of the displayed order
+     */
     @FXML
     public TextField storeOrdersTotal;
-    private int nextOrderNum;
+    /**
+     * List of all placed orders
+     */
     private ObservableList<Order> orders;
+    /**
+     * List of items in the displayed order
+     */
     private ObservableList<MenuItem> selectedOrder;
+    /**
+     * Reference to the CafeController that calls AllOrdersController
+     */
     private CafeController mainController;
     /**
      * Use DF.format(value) to round value to two decimals places
@@ -41,11 +65,19 @@ public class AllOrdersController {
      */
     private static final double taxNJ = 0.06625;
 
+    /**
+     * Method runs on window initialization. Sets up change order action
+     * event and initializes the list view to null.
+     */
     public void initialize() {
         orderNum.setOnAction(this::changeOrder);
         ordersView.setItems(null);
     }
 
+    /**
+     * Sets up the window. Pulls all placed orders and populates the
+     * order selection combobox.
+     */
     public void setWindow() {
         orders = mainController.getAllordersList();
         if (orders != null) {
@@ -55,6 +87,10 @@ public class AllOrdersController {
         }
     }
 
+    /**
+     * Updates the order's total value when a new order number is selected.
+     * Value includes state tax.
+     */
     private void updateTotal() {
         double sum = 0;
         int viewNum = orderNum.getSelectionModel().getSelectedItem();
@@ -73,6 +109,11 @@ public class AllOrdersController {
         storeOrdersTotal.setText("$ " + Double.valueOf(DF.format(sum)));
     }
 
+    /**
+     * Action event. Changes the contents of the listview to match the items
+     * in the selected order.
+     * @param event method triggers when order number combobox value is changed
+     */
     @FXML
     protected void changeOrder(ActionEvent event) {
         int viewNum = orderNum.getSelectionModel().getSelectedItem();
@@ -89,6 +130,12 @@ public class AllOrdersController {
         updateTotal();
     }
 
+    /**
+     * On pressing the Export Orders button. Exports all orders in Store
+     * Order to an external .txt file named "exportedOrders.txt". The file is
+     * location in the RUCafe folder. If the file already exists, overwrite
+     * its contents.
+     */
     @FXML
     protected void exportOrders() {
         try {
@@ -104,6 +151,10 @@ public class AllOrdersController {
         }
     }
 
+    /**
+     * Helper method to exportOrders(). Write orders to the given file name.
+     * @param fileName String, name of the file to write to
+     */
     private void writeOrdersToFile(String fileName) {
         try {
             int num = 0;
@@ -133,6 +184,12 @@ public class AllOrdersController {
         }
     }
 
+    /**
+     * Helper method to writeOrdersToFile(). Calculates the total amount of 1
+     * order (includes tax).
+     * @param OrderNumber integer value of the order's number to process
+     * @return String value of the total order's cost
+     */
     private String calculateTotalString(int OrderNumber) {
         double sum = 0;
         orders = mainController.getAllordersList();
@@ -150,16 +207,20 @@ public class AllOrdersController {
         return DF.format(sum);
     }
 
+    /**
+     * On Cancel Order click. Deletes the order from the list of Store Orders.
+     */
     @FXML
     protected void onCancelOrderButton() {
 
     }
 
-    //Get the reference to the MainController object
+    /**
+     * Method that stores reference to the CafeController
+     * @param controller reference to CafeController
+     */
     public void setMainController (CafeController controller){
         mainController = controller;
         setWindow();
     }
-
-    // todo remove order
 }
