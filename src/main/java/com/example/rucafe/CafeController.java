@@ -24,6 +24,18 @@ public class CafeController {
      */
     private ObservableList<MenuItem> orderCoffee;
     /**
+     * Static integer for initialization
+     */
+    private static int INIT = 0;
+    /**
+     * Static integer for starting
+     */
+    private static int START = 1;
+    /**
+     * Default size of windows
+     */
+    private static int WINDOWSIZE = 500;
+    /**
      * Reference to Donut page's Controller
      */
     DonutController donutPage;
@@ -50,7 +62,7 @@ public class CafeController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("donut-view.fxml"));
             root = (BorderPane) loader.load();
-            Scene scene = new Scene(root, 500, 500);
+            Scene scene = new Scene(root, WINDOWSIZE, WINDOWSIZE);
             stage.setTitle("Donut Select");
             stage.setResizable(false);
             stage.setScene(scene);
@@ -76,7 +88,7 @@ public class CafeController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("coffee-view.fxml"));
             root = (BorderPane) loader.load();
-            Scene scene = new Scene(root, 500, 500);
+            Scene scene = new Scene(root, WINDOWSIZE, WINDOWSIZE);
             stage.setTitle("Coffee Select");
             stage.setResizable(false);
             stage.setScene(scene);
@@ -102,7 +114,7 @@ public class CafeController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("basket-view.fxml"));
             root = (BorderPane) loader.load();
-            Scene scene = new Scene(root, 500, 500);
+            Scene scene = new Scene(root, WINDOWSIZE, WINDOWSIZE);
             stage.setTitle("Basket");
             stage.setResizable(false);
             stage.setScene(scene);
@@ -128,7 +140,7 @@ public class CafeController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("allorders-view.fxml"));
             root = (BorderPane) loader.load();
-            Scene scene = new Scene(root, 500, 500);
+            Scene scene = new Scene(root, WINDOWSIZE, WINDOWSIZE);
             stage.setTitle("All Store Orders");
             stage.setResizable(false);
             stage.setScene(scene);
@@ -244,8 +256,8 @@ public class CafeController {
             return;
         }
         // Initialize orders list if needed
-        if (allordersNext == 0) {
-            allordersNext = 1; // first order
+        if (allordersNext == INIT) {
+            allordersNext = START; // first order
         }
         ObservableList<MenuItem> newOrder = returnBasket();
         if (allordersList == null) {
@@ -253,13 +265,7 @@ public class CafeController {
         }
         allordersList.add(new Order(allordersNext, newOrder));
 
-        // Add order
-        System.out.println("Adding order #" + allordersNext);
-        for (MenuItem item : newOrder) {
-            System.out.println(item);
-        }
-
-        allordersNext += 1;
+        allordersNext += START;
     }
 
     /**
