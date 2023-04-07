@@ -216,17 +216,18 @@ public class AllOrdersController {
             return;
         }
         int viewNum = orderNum.getSelectionModel().getSelectedItem();
-        // Find list of items associated w/ that number and return
+        Order remElem = null;
         for (Order ord : orders) {
             if (ord.getNum() == viewNum) {
-                orders.remove(ord);
+                remElem = ord;
             }
         }
-        ordersView.refresh();
+        if (remElem != null) {
+            orders.remove(remElem);
+        }
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
-
     /**
      * Method that stores reference to the CafeController
      * @param controller reference to CafeController
