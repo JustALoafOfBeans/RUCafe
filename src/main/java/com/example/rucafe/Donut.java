@@ -1,8 +1,5 @@
 package com.example.rucafe;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-
 import java.text.DecimalFormat;
 
 /**
@@ -23,6 +20,14 @@ public class Donut extends MenuItem{
      * Flavor of donut selected, options vary with type
      */
     private String flavor;
+    /**
+     * Initial size constant
+     */
+    private static int INIT = 0;
+    /**
+     * Error integer
+     */
+    private static int ERROR = -1;
     /**
      * Use DF.format(value) to round value to two decimals places. Rounding
      * up or down is by basic convention. Returns a String.
@@ -54,7 +59,7 @@ public class Donut extends MenuItem{
             case "Donut Hole":
                 return Double.valueOf(DF.format(prices.HOLE.val*quantity));
             default:
-                return -1;
+                return ERROR;
         }
     }
 
@@ -68,7 +73,7 @@ public class Donut extends MenuItem{
         if (equalObject instanceof Donut)
         {
             Donut equalDonut = (Donut) equalObject; // Cast into Student if can
-            return (this.compareTo(equalDonut) == 0);
+            return (this.compareTo(equalDonut) == INIT);
         }
         return false; // Not of type student, invalid comparison
     }
@@ -79,9 +84,9 @@ public class Donut extends MenuItem{
      */
     public int compareTo(Donut compareDonut) {
         if (this.toString().equals(compareDonut.toString())) {
-            return 0;
+            return INIT;
         }
-        return -1;
+        return ERROR;
     }
 
     /**
