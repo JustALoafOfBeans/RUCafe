@@ -27,16 +27,19 @@ public class AllOrdersController {
     @FXML
     public Button cancelButton, exportButton;
     @FXML
-    public TextField costText;
+    public TextField storeOrdersTotal;
     private int nextOrderNum;
     private ObservableList<Order> orders;
     private ObservableList<MenuItem> selectedOrder;
     private CafeController mainController;
-    private static final double TAXNJ = 0.06625;
     /**
      * Use DF.format(value) to round value to two decimals places
      */
     private static final DecimalFormat DF = new DecimalFormat("0.00");
+    /**
+     *  Constant for tax rate in NJ, applied to find tax and total costs
+     */
+    private static final double taxNJ = 0.06625;
 
     public void initialize() {
         orderNum.setOnAction(this::changeOrder);
@@ -52,13 +55,22 @@ public class AllOrdersController {
         }
     }
 
-    public void updateTotal() {
-        double price = 0;
-        for (int i = 0; i < ordersView.getItems().size(); i++) {
-            price += (ordersView.getItems().get(i).itemPrice());
+    private void updateTotal() {
+        double sum = 0;
+        int viewNum = orderNum.getSelectionModel().getSelectedItem();
+        orders = mainController.getAllordersList();
+        for (Order ord : orders) {
+            if (ord.getNum() == viewNum) {
+                selectedOrder = ord.getItems();
+            }
         }
-        price = price * (1 + TAXNJ);
-        costText.setText("$ "+ Double.valueOf(DF.format(price)));
+        if (selectedOrder != null) {
+            for (MenuItem item : selectedOrder) {
+                sum += item.itemPrice();
+            }
+        }
+        sum += sum*taxNJ; //add tax
+        storeOrdersTotal.setText("$ " + Double.valueOf(DF.format(sum)));
     }
 
     @FXML
@@ -107,6 +119,7 @@ public class AllOrdersController {
                             myWriter.write(item.toString() + "\n");
                         }
                     }
+                    myWriter.write("Order total: $" + calculateTotalString(num) + "\n");
                     myWriter.write("\n");
                     Stage stage = (Stage) exportButton.getScene().getWindow();
                     stage.close();
@@ -118,6 +131,28 @@ public class AllOrdersController {
         } catch (IOException e) {
             // System.out.println("An error occurred. Unable to write.");
         }
+    }
+
+    private String calculateTotalString(int OrderNumber) {
+        double sum = 0;
+        orders = mainController.getAllordersList();
+        for (Order ord : orders) {
+            if (ord.getNum() == OrderNumber) {
+                selectedOrder = ord.getItems();
+            }
+        }
+        if (selectedOrder != null) {
+            for (MenuItem item : selectedOrder) {
+                sum += item.itemPrice();
+            }
+        }
+        sum += sum*taxNJ; //add tax
+        return DF.format(sum);
+    }
+
+    @FXML
+    protected void onCancelOrderButton() {
+
     }
 
     //Get the reference to the MainController object
