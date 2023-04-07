@@ -46,7 +46,7 @@ public class BasketController {
     /**
      *  Constant for tax rate in NJ, applied to find tax and total costs
      */
-    private static final double taxNJ = 0.06625;
+    private static final double TAXNJ = 0.06625;
     //Get the reference to the MainController object
 
     /**
@@ -109,7 +109,7 @@ public class BasketController {
         }
         basketSubtotal.setText("$ " + Double.valueOf(DF.format(subtotal)));
 
-        double tax = subtotal * taxNJ;
+        double tax = subtotal * TAXNJ;
         basketTax.setText("$ " + Double.valueOf(DF.format(tax)));
 
         double total = subtotal + tax;

@@ -9,11 +9,13 @@ import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class AllOrdersController {
@@ -24,10 +26,17 @@ public class AllOrdersController {
     public ComboBox<Integer> orderNum;
     @FXML
     public Button cancelButton, exportButton;
+    @FXML
+    public TextField costText;
     private int nextOrderNum;
     private ObservableList<Order> orders;
     private ObservableList<MenuItem> selectedOrder;
     private CafeController mainController;
+    private static final double TAXNJ = 0.06625;
+    /**
+     * Use DF.format(value) to round value to two decimals places
+     */
+    private static final DecimalFormat DF = new DecimalFormat("0.00");
 
     public void initialize() {
         orderNum.setOnAction(this::changeOrder);
@@ -43,6 +52,15 @@ public class AllOrdersController {
         }
     }
 
+    public void updateTotal() {
+        double price = 0;
+        for (int i = 0; i < ordersView.getItems().size(); i++) {
+            price += (ordersView.getItems().get(i).itemPrice());
+        }
+        price = price * (1 + TAXNJ);
+        costText.setText("$ "+ Double.valueOf(DF.format(price)));
+    }
+
     @FXML
     protected void changeOrder(ActionEvent event) {
         int viewNum = orderNum.getSelectionModel().getSelectedItem();
@@ -56,6 +74,7 @@ public class AllOrdersController {
             ordersView.setItems(selectedOrder);
         }
         ordersView.refresh();
+        updateTotal();
     }
 
     @FXML
