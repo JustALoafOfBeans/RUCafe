@@ -212,6 +212,9 @@ public class AllOrdersController {
      */
     @FXML
     protected void onCancelOrderButton() {
+        if (orderNum.getSelectionModel().getSelectedItem() == null) {
+            return;
+        }
         int viewNum = orderNum.getSelectionModel().getSelectedItem();
         // Find list of items associated w/ that number and return
         for (Order ord : orders) {
