@@ -15,12 +15,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CafeController {
+    /**
+     * List of donuts ordered
+     */
     private ObservableList<Donut> orderDonut;
+    /**
+     * List of coffee ordered
+     */
     private ObservableList<MenuItem> orderCoffee;
+    /**
+     * Reference to Donut page's Controller
+     */
     DonutController donutPage;
+    /**
+     * Reference to Store Order page's Controller
+     */
     AllOrdersController allordersPage;
+    /**
+     * List containing all the current orders
+     */
     ObservableList<Order> allordersList;
+    /**
+     * Integer for the order number of the next order to create
+     */
     int allordersNext;
+
+    /**
+     * Method displays the select donuts page
+     */
     @FXML
     protected void displayDonutsViewer() {
         Stage stage = new Stage();
@@ -44,6 +66,9 @@ public class CafeController {
         }
     }
 
+    /**
+     * Method displays the select coffee page
+     */
     @FXML
     protected void displayCoffeeViewer() {
         Stage stage = new Stage();
@@ -67,6 +92,9 @@ public class CafeController {
         }
     }
 
+    /**
+     * Method displays the basket page (current order)
+     */
     @FXML
     protected void displayBasketViewer() {
         Stage stage = new Stage();
@@ -90,6 +118,9 @@ public class CafeController {
         }
     }
 
+    /**
+     * Method displays the Store Orders page (all orders which have been placed)
+     */
     @FXML
     protected void displayAllOrdersViewer() {
         Stage stage = new Stage();
@@ -113,6 +144,10 @@ public class CafeController {
         }
     }
 
+    /**
+     * Method adds a new donut to the order
+     * @param newOrder list of donuts to add to the order
+     */
     public void addDonuts(ObservableList<Donut> newOrder) {
         if (orderDonut == null) {
             orderDonut = newOrder;
@@ -126,13 +161,14 @@ public class CafeController {
                 }
             }
         }
-        for (Donut nut : orderDonut) { // todo remove test print
-            System.out.println(nut + " for " + nut.itemPrice());
-        }
-        System.out.println();
     }
 
-    // Returns null if no item of that type+flavor yet
+    /**
+     * Helper function to addDonuts(). Returns null if there is no item of that
+     * type and flavor yet.
+     * @param newItem donut to compare
+     * @return item if this donut is the same as parameter, null otherwise
+     */
     private Donut containsType(Donut newItem) { // todo copy pasted from DonutController... maybe move to donut
         for (Donut item : orderDonut) {
             if (item.getType().equals(newItem.getType())) {
@@ -144,17 +180,22 @@ public class CafeController {
         return null;
     }
 
+    /**
+     * Method adds a new Coffee to the order
+     * @param newCoffee coffee item to add to the order
+     */
     public void addCoffee (MenuItem newCoffee) {
         if (orderCoffee == null) {
             orderCoffee = FXCollections.observableArrayList();
         }
         orderCoffee.add(newCoffee);
-        for (MenuItem item : orderCoffee) {
-            System.out.println(item + " for " + item.itemPrice());
-        }
-        System.out.println(); // todo remove test print
     }
 
+    /**
+     * Method returns the current basket comprised of all current Donut and
+     * Coffee objects.
+     * @return List of menu items
+     */
     public ObservableList<MenuItem> returnBasket () {
         ObservableList<MenuItem> basket = FXCollections.observableArrayList();
         if (orderCoffee != null) {
@@ -163,16 +204,13 @@ public class CafeController {
         if (orderDonut != null) {
             basket.addAll(orderDonut);
         }
-
-        /* System.out.println("BASKET:");
-        for (MenuItem item : basket) {
-            System.out.println(item);
-        }
-        System.out.println(); */
-
         return basket;
     }
 
+    /**
+     * Method removes an item from the current order
+     * @param item Coffee or Donut item to be removed
+     */
     public void removeItem(MenuItem item) {
         if (item instanceof Donut) {
             donutPage.removeDonut((Donut) item);
@@ -183,6 +221,9 @@ public class CafeController {
         }
     }
 
+    /**
+     * Method clears all items from the basket
+     */
     public void clearBasket() {
         if (orderDonut != null) {
             orderDonut.clear();
@@ -194,6 +235,10 @@ public class CafeController {
         orderCoffee = null;
     }
 
+    /**
+     * Method places the current order. Adds the current basket to the list
+     * of Store Orders.
+     */
     public void placeOrder() {
         if (orderDonut == null && orderCoffee == null) {
             return;
@@ -217,6 +262,10 @@ public class CafeController {
         allordersNext += 1;
     }
 
+    /**
+     * Method returns a list of all the orders currently placed.
+     * @return list of all placed orders
+     */
     public ObservableList<Order> getAllordersList() {
         return allordersList;
     }

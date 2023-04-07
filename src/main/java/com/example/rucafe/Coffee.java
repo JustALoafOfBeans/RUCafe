@@ -69,7 +69,7 @@ public class Coffee extends MenuItem{
      */
     @Override
     public String toString() {
-        String item = quantity + " " + cupSize;
+        String item = quantity + " " + cupSize + " coffee";
         if (addIns.size() != INIT) {
             item +=  " (";
             for (int i = 0; i < addIns.size(); i++) {
