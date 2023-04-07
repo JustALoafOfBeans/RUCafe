@@ -69,13 +69,14 @@ public class Coffee extends MenuItem{
      */
     @Override
     public String toString() {
+        int ADJUST = 2;
         String item = quantity + " " + cupSize + " coffee";
         if (addIns.size() != INIT) {
             item +=  " (";
-            for (int i = 0; i < addIns.size(); i++) {
+            for (int i = INIT; i < addIns.size(); i++) {
                 item += addIns.get(i) + ", ";
             }
-            item = item.substring(0,item.length()-2); //crop last ", "
+            item = item.substring(INIT,item.length()-ADJUST); //crop last ", "
             item += ")";
         }
         return item;
