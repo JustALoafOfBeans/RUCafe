@@ -220,4 +220,16 @@ public class CafeController {
     public ObservableList<Order> getAllordersList() {
         return allordersList;
     }
+
+    /**
+     * Method that removes a specified order from the list
+     * @param remNum number associated with order to remove
+     */
+    public void removeAllordersList(int remNum) {
+        for (Order ord : allordersList) {
+            if (ord.getNum() == remNum) {
+                allordersList.remove(ord);
+            }
+        }
+    }
 }
